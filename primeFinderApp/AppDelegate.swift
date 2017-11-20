@@ -8,6 +8,14 @@
 
 import UIKit
 
+func delay(delay:Double, completionHandler:@escaping () -> Void) -> DispatchWorkItem {
+    let task = DispatchWorkItem {
+        completionHandler()
+    }
+    DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: task)
+    return task
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
